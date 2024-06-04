@@ -1,0 +1,75 @@
+@import url('./reset.css');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color: #242424;
+  background-color: rgba(255, 255, 255, 0.87);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  margin-top: 150px;
+  gap: 20px;
+}
+
+li {
+  margin: 0 auto;
+  padding: 15px;
+  border: #5e5d5d 1px solid;
+  border-radius: 6px;
+  background-color: #ece7e7;
+  transition: background-color 0.3s, box-shadow 0.3s;
+
+}
+
+li:hover {
+  background-color: #5e5d5d;
+  box-shadow: 2px 2px 8px 0 #00000069;
+}
+
+.nav {
+  display: block;
+  font-size: 48px;
+  margin: 8px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s;
+}
+
+.nav:hover {
+  color: #FFFFFF;
+}
+
+section a {
+  padding: 2px 5px;
+  border: #5e5d5d 1px solid;
+  border-radius: 6px;
+  background-color: #ece7e7;
+  transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+section a:hover {
+  background-color: #5e5d5d;
+  box-shadow: 1px 1px 3px 0 #00000069;
+  color: #FFFFFF;
+}
+
+
