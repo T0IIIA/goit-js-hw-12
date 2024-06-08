@@ -8,9 +8,26 @@
     
     
     <script type="module" crossorigin src="/goit-js-hw-12/commonHelpers.js"></script>
-    <link rel="stylesheet" href="/goit-js-hw-12/assets/index-e1c1454c.css">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-c493984e.js">
+    <link rel="stylesheet" href="/goit-js-hw-12/assets/vendor-1cd1f9d9.css">
+    <link rel="stylesheet" href="/goit-js-hw-12/assets/index-62cf2e89.css">
   </head>
   <body>
+
+    <form class="search-form" autocomplete="off">
+        <input type="text" name="input-search" class="input-search" placeholder="Search images...">
+        <button type="submit" class="btn-search">Search</button>
+    </form>
+
+    <ul class="gallery__main__list">
+        <li class="gallery"></li>
+
+        <li class="loader-wrapper">
+            <span class="loader">Load&nbsp;ng</span>
+            <button type="submit" class="load-more">⇪   Load more   ⇪</button>
+        </li>
+    </ul>
+
 
 
 
