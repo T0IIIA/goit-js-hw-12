@@ -69,14 +69,13 @@ async function onLoadMore() {
 
         imageGallery.insertAdjacentHTML('beforeend', markup);
         lightbox.refresh();
+        loadMoreBtnShow();
 
         if (pageCounter >= data.totalHits) {
             loadMoreBtnHide()
             iziToast.info({ ...mainParams, ...infoParams });
             hideLoader();
         }
-
-        loadMoreBtnShow();
 
         const card = document.querySelector(".gallery-item");
         const cardHeight = card.getBoundingClientRect().height * 2;
