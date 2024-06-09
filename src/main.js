@@ -48,13 +48,13 @@ function onSubmit(event) {
         lightbox.refresh();
         perPage = data.hits.length;
         loadMoreBtnShow();
+        lastInputName = imageName;
     })
     .catch(error => {
         iziToast.error({ ...mainParams, message: error.message });
     })
     .finally(() => {
         hideLoader();
-        lastInputName = imageName;
     });
 
     return event.target.reset();
