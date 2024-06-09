@@ -24,7 +24,7 @@ function onSubmit(event) {
     loadMoreBtnHide()
 
     if (!imageName) {
-        return;
+        return
     }
 
     showLoader();

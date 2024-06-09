@@ -22,6 +22,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+body {
+  padding: 0 25px;
+}
+
 .search-form {
   max-width: 470px;
   display: flex;
