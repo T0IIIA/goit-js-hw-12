@@ -43,6 +43,10 @@ function onSubmit(event) {
         imageGallery.insertAdjacentHTML('afterbegin', markup);
         lightbox.refresh();
         loadMoreBtnShow();
+
+        if (data.hits.length >= data.totalHits) {
+            loadMoreBtnHide()
+        }
     })
     .catch(error => {
         iziToast.error({ ...mainParams, message: error.message });
