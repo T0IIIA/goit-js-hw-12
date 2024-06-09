@@ -23,11 +23,13 @@ searchForm.addEventListener('submit', onSubmit);
 function onSubmit(event) {
     event.preventDefault();
     imageName = searchForm.inputSearch.value.trim();
-    showLoader();
 
-    if (imageName === '') {
+    if (!imageName) {
         return;
     }
+
+    showLoader();
+
     if (lastInputName !== imageName) {
         page = 0;
     }
