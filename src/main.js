@@ -74,7 +74,6 @@ async function onLoadMore() {
             loadMoreBtnHide()
             iziToast.info({ ...mainParams, ...infoParams });
             hideLoader();
-            return console.log('ALARMAAAAA');
         }
 
         loadMoreBtnShow();
