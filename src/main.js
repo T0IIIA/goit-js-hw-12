@@ -16,22 +16,19 @@ const loadMore = document.querySelector('.load-more');
 let imageName = '';
 let page = 0;
 let perPage = 0;
-
-searchForm.addEventListener('input', (event) => {
-    imageName = event.target.value.trim();
-});
+let lastInputName = '';
 
 searchForm.addEventListener('submit', onSubmit);
+
 function onSubmit(event) {
     event.preventDefault();
+    imageName = searchForm.inputSearch.value.trim();
     showLoader();
 
     if (!imageName) {
         return;
     }
-
-    const lastImageName = localStorage.getItem('imageName');
-    if(lastImageName !== imageName) {
+    if (lastInputName !== imageName) {
         page = 0;
     }
 
@@ -52,12 +49,13 @@ function onSubmit(event) {
         perPage = data.hits.length;
         loadMoreBtnShow();
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+        iziToast.error({ ...mainParams, message: error.message });
+    })
     .finally(() => {
         hideLoader();
+        lastInputName = imageName;
     });
-
-    localStorage.setItem('imageName', imageName);
 
     return event.target.reset();
 }
