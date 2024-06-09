@@ -1,8 +1,8 @@
 import axios from 'axios';
-export { getImages };
+export { getImages, perPage };
 
 //----------------------------------
-
+const perPage = 15;
 
 async function getImages(imageName, page) {
     const BASE_URL = 'https://pixabay.com/api/';
@@ -13,7 +13,7 @@ async function getImages(imageName, page) {
         orientation: 'horizontal',
         safesearch: true,
         page: page,
-        per_page: 15
+        per_page: perPage
       })
 
     const url = await axios(`${BASE_URL}?${params}`);

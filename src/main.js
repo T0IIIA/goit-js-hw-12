@@ -3,7 +3,7 @@ import "izitoast/dist/css/iziToast.min.css"
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-import { getImages } from './js/pixabay-api.js';
+import { getImages, perPage } from './js/pixabay-api.js';
 import { imageTamplate } from './js/render-functions.js';
 
 const searchForm = document.querySelector('.search-form');
@@ -15,28 +15,22 @@ const loadMore = document.querySelector('.load-more');
 
 let imageName = '';
 let page = 0;
-let perPage = 0;
-let lastInputName = '';
 
 searchForm.addEventListener('submit', onSubmit);
 
 function onSubmit(event) {
     event.preventDefault();
     imageName = searchForm.inputSearch.value.trim();
+    loadMoreBtnHide()
 
     if (!imageName) {
         return;
     }
 
     showLoader();
-
-    if (lastInputName !== imageName) {
-        page = 0;
-    }
-
     imageGallery.innerHTML = '';
 
-    getImages(imageName, (page+=1))
+    getImages(imageName, (page = 1))
     .then(data => {
         if (data.hits.length === 0) {
             imageGallery.innerHTML = '';
@@ -48,9 +42,7 @@ function onSubmit(event) {
 
         imageGallery.insertAdjacentHTML('afterbegin', markup);
         lightbox.refresh();
-        perPage = data.hits.length;
         loadMoreBtnShow();
-        lastInputName = imageName;
     })
     .catch(error => {
         iziToast.error({ ...mainParams, message: error.message });
@@ -73,15 +65,17 @@ async function onLoadMore() {
     try {
         const data = await getImages(imageName, (page += 1));
         const markup = imageTamplate(data.hits);
-        perPage += data.hits.length;
-
-        if (perPage >= data.totalHits) {
-            return iziToast.info({ ...mainParams, ...infoParams });
-            hideLoader();
-        }
+        let pageCounter = page * perPage;
 
         imageGallery.insertAdjacentHTML('beforeend', markup);
         lightbox.refresh();
+
+        if (pageCounter >= data.totalHits) {
+            loadMoreBtnHide()
+            iziToast.info({ ...mainParams, ...infoParams });
+            hideLoader();
+            return console.log('ALARMAAAAA');
+        }
 
         loadMoreBtnShow();
 
