@@ -25,7 +25,7 @@ function onSubmit(event) {
     imageName = searchForm.inputSearch.value.trim();
     showLoader();
 
-    if (!imageName) {
+    if (imageName === '') {
         return;
     }
     if (lastInputName !== imageName) {
